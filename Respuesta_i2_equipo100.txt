@@ -4,3 +4,21 @@ ALFA: Santiago Cannistra
 c- ¿Puede GAMMA actualizar su FORK al estado del fork de ALFA? Respuesta: Sí. En Git, cualquier repositorio puede conectarse con otro. Funciona en ambas direcciones. GAMMA agregaría el repositorio de ALFA como remoto, haría un fetch y luego un merge; o solicitaría un Pull Request directamente en la plataforma web de GitHub.
 
 d- ¿Los datos que tenía en mi repositorio, editados por mi, se pierden si quiero actualizar el fork? Respuesta: No, los datos no se pierden automáticamente. Git intentará fusionar (hacer merge) los cambios nuevos con los que ya tenías. Si se modificaron las mismas líneas exactas en ambos lados, Git generará un "conflicto" y pausará la fusión para que el usuario decida manualmente qué versión del código conservar (como hicimos en el paso 10 de este TP).
+
+GitHub.
+
+e- Listado paso a paso de los comandos necesarios:
+
+BETA: git init, git add readme.md fork.txt, git commit -m "Init", git push origin main
+
+ALFA/GAMMA: Fork en web. git clone , edición, git add fork.txt, git commit -m "Datos", git push origin main
+
+BETA: git pull origin main, git add "Nuevo Dato.txt", git commit -m "Nuevo dato", git push origin main
+
+ALFA/GAMMA: git remote add upstream <url_beta>, git fetch upstream, git merge upstream/main, git push origin main
+
+ALFA/GAMMA: git checkout -b rama-conflicto, edición línea 2, git add fork.txt, git commit -m "Modifica L2", git push origin rama-conflicto
+
+BETA: git fetch/merge de los cambios o Acepta Pull Request en la web y hace git pull origin main.
+
+ALFA: git checkout rama-conflicto, git fetch upstream, git merge upstream/main (Resolución manual del conflicto), git add fork.txt, git commit -m "Resuelve conflicto", git push origin rama-conflicto.
