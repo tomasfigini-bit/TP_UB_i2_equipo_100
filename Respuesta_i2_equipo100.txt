@@ -1,5 +1,13 @@
 BETA: Tomas Figini
 ALFA: Santiago Cannistra
+GAMMA: Francisco Peroni
+
+a- ¿Cómo actualizo mi repositorio, al estado que esté el repo que hice FORK? Agrego el repositorio original como upstream y luego traigo los cambios con los comandos:
+git fetch upstream
+git merge upstream/main
+
+b- ¿Puede ALFA actualizar su FORK al estado del fork de GAMMA? No directamente, porque cada fork es independiente. Solo puede hacerlo si agrega el repositorio de GAMMA como remote y luego trae los cambios.
+
 
 c- ¿Puede GAMMA actualizar su FORK al estado del fork de ALFA? Respuesta: Sí. En Git, cualquier repositorio puede conectarse con otro. Funciona en ambas direcciones. GAMMA agregaría el repositorio de ALFA como remoto, haría un fetch y luego un merge; o solicitaría un Pull Request directamente en la plataforma web de GitHub.
 
